@@ -2,23 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a6fa3d6e-0e6c-4a46-8452-84e6d4de3bab" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.rubocop.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/controllers/api/auth_controller.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/models/dialog.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/models/friend.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/models/message.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/models/photo.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/models/post.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/models/user.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/models/users_to_dialog.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/migrate/20201205120655_create_friends.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/migrate/20201205121921_create_users_to_dialogs.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/migrate/20201205122020_create_dialogs.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/migrate/20201205122103_create_messages.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/migrate/20201205125048_create_posts.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/migrate/20201205125211_create_photos.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/migrate/20201205125747_create_users.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/schema.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/403.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/api/auth_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/api/auth_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/routes.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20201205125747_create_users.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/migrate/20201205125747_create_users.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/schema.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/schema.rb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,6 +40,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
@@ -71,9 +61,10 @@
       <command value="rails g controller --help" />
       <command value="rails g controller api/Auth auth -j=false -y=false --no-helper " />
       <command value="rails d cotroller Auth" />
+      <command value="rails g controller Main index -j=false" />
     </option>
   </component>
-  <component name="RunManager" selected="Rake.db:migrate">
+  <component name="RunManager" selected="Rails.Development: SemenDiploma">
     <configuration name="Development: SemenDiploma" type="RailsRunConfigurationType" factoryName="Rails">
       <module name="SemenDiploma" />
       <predefined_log_file enabled="true" id="RUBY_RAILS_SERVER" />
@@ -197,7 +188,8 @@
       <workItem from="1607099529110" duration="1783000" />
       <workItem from="1607160508805" duration="7766000" />
       <workItem from="1607177709901" duration="1779000" />
-      <workItem from="1607181940735" duration="1019000" />
+      <workItem from="1607181940735" duration="4053000" />
+      <workItem from="1607193493111" duration="3042000" />
     </task>
     <servers />
   </component>
@@ -219,8 +211,22 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="ruby-line">
+          <url>file://$PROJECT_DIR$/app/controllers/api/auth_controller.rb</url>
+          <line>31</line>
+          <properties myBlockOrdinal="-1">
+            <option name="block-ordinal" value="-1" />
+          </properties>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/SemenDiploma@Development__SemenDiploma.rcov" NAME="Development: SemenDiploma Coverage Results" MODIFIED="1607169053706" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="SemenDiploma" />
+    <SUITE FILE_PATH="coverage/SemenDiploma@Development__SemenDiploma.rcov" NAME="Development: SemenDiploma Coverage Results" MODIFIED="1607199903812" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="SemenDiploma" />
     <SUITE FILE_PATH="coverage/SemenDiploma@db_migrate.rcov" NAME="db:migrate Coverage Results" MODIFIED="1607181307985" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="SemenDiploma" />
   </component>
 </project>

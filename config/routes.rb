@@ -1,8 +1,29 @@
 Rails.application.routes.draw do
-  namespace :api do
-    get 'auth/auth'
-  end
+    get 'main/index'
     namespace :api do
-        get 'auth' => 'auth#auth'
+        get 'auth/login'
+        get 'auth/me'
+        get 'auth/register'
+
+        # get 'profile/edit'
+        # get 'profile/:id'
+        # get 'profile/:id/friends'
+        # post 'profile/:id/subscribe'
+        # post 'profile/:id/unsubscribe'
+
+        # get 'photo/:id'
+
+        # get 'post/all/:id'
+        # get 'post/:id'
+        # post 'post/:id'
+
+        # get 'comments/:id'
+        # post 'comments/:id'
+
+        # get 'messages'
+        # get 'messages/:id'
+        # post 'messages/:id'
     end
+    root 'main#index'
+    get '/*path' => 'main#index'
 end

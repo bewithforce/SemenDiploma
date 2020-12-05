@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 2020_12_05_125747) do
     t.string "email"
     t.string "password", limit: 64
     t.string "name"
-    t.text "last_cookie"
+    t.text "token"
     t.bigint "photo_id"
     t.date "birthday"
     t.string "current_city"
@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 2020_12_05_125747) do
     t.integer "fide_rating"
     t.text "about"
     t.text "hobbies"
+    t.boolean "online"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

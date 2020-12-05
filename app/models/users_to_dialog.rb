@@ -1,0 +1,2 @@
+class UsersToDialog < ApplicationRecord
+end

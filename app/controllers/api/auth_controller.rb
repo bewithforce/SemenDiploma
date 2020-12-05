@@ -1,17 +1,19 @@
 require 'securerandom'
 
 class Api::AuthController < ApplicationController
+    skip_before_action :verify_authenticity_token
+
     def login
         email = params['email']
         password = params['password']
-        flag = User.where(["email=:email and password=:password", {email: email, password: password}]).length == 0 ? false : true
-        if flag
-            token = SecureRandom.hex
-            cookies[:auth_token] = token
-            render json: {}, status: 200
-        else
+        user = User.find_by_email(email)
+        if user.password != password
             render json: {}, status: 403
         end
+
+        token = SecureRandom.hex
+        cookies[:auth_token] = token
+        render json: user, status: 200
     end
 
     def me
@@ -39,6 +41,10 @@ class Api::AuthController < ApplicationController
     end
 
     def logout
-
+        cookie = cookies[:auth_token]
+        user = User.find_by_token(cookie)
+        user.token = ""
+        user.save
+        render json: {}, status: 200
     end
 end

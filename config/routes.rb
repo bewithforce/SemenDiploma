@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
     get 'main/index'
     namespace :api do
-        get 'auth/login'
+        post 'auth/login'
         get 'auth/me'
         get 'auth/register'
+        get 'auth/logout'
 
         # get 'profile/edit'
         # get 'profile/:id'

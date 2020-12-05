@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a6fa3d6e-0e6c-4a46-8452-84e6d4de3bab" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/403.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/api/auth_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/api/auth_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/routes.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/migrate/20201205125747_create_users.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/migrate/20201205125747_create_users.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/schema.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/schema.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/database.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config/database.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,6 +40,11 @@
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\Projects\Ruby\SemenDiploma\public" />
+    </key>
+  </component>
   <component name="RunAnythingCache">
     <option name="myCommands">
       <command value="rails g model User id:bigint email:string password:string{64} name:string  last_cookie:text" />
@@ -64,7 +64,7 @@
       <command value="rails g controller Main index -j=false" />
     </option>
   </component>
-  <component name="RunManager" selected="Rails.Development: SemenDiploma">
+  <component name="RunManager" selected="Rails.Production: SemenDiploma">
     <configuration name="Development: SemenDiploma" type="RailsRunConfigurationType" factoryName="Rails">
       <module name="SemenDiploma" />
       <predefined_log_file enabled="true" id="RUBY_RAILS_SERVER" />
@@ -189,7 +189,7 @@
       <workItem from="1607160508805" duration="7766000" />
       <workItem from="1607177709901" duration="1779000" />
       <workItem from="1607181940735" duration="4053000" />
-      <workItem from="1607193493111" duration="3042000" />
+      <workItem from="1607193493111" duration="3391000" />
     </task>
     <servers />
   </component>

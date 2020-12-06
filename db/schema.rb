@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(version: 2020_12_06_174005) do
     t.string "name"
     t.text "token"
     t.bigint "photo_id"
-    t.date "birthday"
+    t.string "birthday"
     t.string "current_city"
     t.string "study_place"
     t.string "chess_level"
@@ -80,6 +80,8 @@ ActiveRecord::Schema.define(version: 2020_12_06_174005) do
     t.boolean "online"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "surname"
+    t.string "current_country"
   end
 
   create_table "users_to_dialogs", id: false, force: :cascade do |t|

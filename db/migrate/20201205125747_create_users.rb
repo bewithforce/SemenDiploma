@@ -4,9 +4,10 @@ class CreateUsers < ActiveRecord::Migration[6.0]
       t.string :email
       t.string :password, limit: 64
       t.string :name
+      t.string :surname
       t.text :token
       t.bigint :photo_id
-      t.date :birthday
+      t.string :birthday
       t.string :current_city
       t.string :study_place
       t.string :chess_level

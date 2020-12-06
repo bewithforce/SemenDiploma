@@ -20,10 +20,11 @@ class Api::AuthController < ApplicationController
 
         cookies[:auth_token] = token
         photo = Photo.find_by_id(user.photo_id)
-        answer = JSON.parse user.to_json(:only => [:about, :birthday, :chess_level, :current_city, :current_country, :fide_rating, :hobbies, :name, :surname, :online, :study_place])
+        answer = JSON.parse user.to_json(:only => [:id, :email, :about, :birthday, :chess_level, :current_city, :current_country, :fide_rating, :hobbies, :name, :surname, :online, :study_place])
         answer[:photo] = photo.photo
         render :json => answer, status: 200
     end
+
 
     def me
         cookie = cookies[:auth_token]
@@ -52,6 +53,7 @@ class Api::AuthController < ApplicationController
               fide_rating: 0,
               hobbies: "",
               name: "",
+              surname: "",
               photo_id: 0,
               study_place: "",
               email: email,

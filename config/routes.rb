@@ -1,4 +1,19 @@
 Rails.application.routes.draw do
+  namespace :api do
+    get 'dialog/show'
+  end
+  namespace :api do
+    get 'messages/show'
+    get 'messages/add'
+  end
+  namespace :api do
+    get 'news/show'
+  end
+  namespace :api do
+    get 'comments/show'
+    get 'comments/add'
+    get 'comments/delete'
+  end
     get 'main/index'
     namespace :api do
         post 'auth/login'
@@ -7,6 +22,7 @@ Rails.application.routes.draw do
         delete 'auth/logout'
 
         get 'profile/edit'
+        get 'profile/all'
         get 'profile/:id/photo' => 'profile#photo'
         get 'profile/friends' => 'profile#friends'
         post 'profile/:id/subscribe' => 'profile#subscribe'
@@ -20,8 +36,9 @@ Rails.application.routes.draw do
         post 'post/:id/add' => 'posts#add'
         delete 'post/:id' => 'posts#delete'
 
-        # get 'comments/:id'
-        # post 'comments/:id'
+        get 'comments/:id' => 'comments#show'
+        post 'comments/:id/add' => 'comments#add'
+        delete 'comments/:id/delete' => 'comments#delete'
 
         # get 'messages'
         # get 'messages/:id'

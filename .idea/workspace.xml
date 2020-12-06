@@ -2,9 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a6fa3d6e-0e6c-4a46-8452-84e6d4de3bab" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/models/comment.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/news.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/migrate/20201206172538_create_news.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/migrate/20201206174005_create_comments.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/api/posts_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/api/posts_controller.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/routes.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20201205125048_create_posts.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/migrate/20201205125048_create_posts.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/schema.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/schema.rb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,6 +74,12 @@
       <command value="rails g controller api/Posts -j=false -y=false --no-helper --skip-template-engine" />
       <command value="rails g model Follower user_id:bigint following_id:bigint" />
       <command value="rails d model Friends" />
+      <command value="rails g controller api/Comments show add delete -j=false -y=false --no-helper --skip-template-engine" />
+      <command value="rails g model News photo_id:bigint text:text" />
+      <command value="rails g controller api/News show -j=false -y=false --no-helper --skip-template-engine" />
+      <command value="rails g controller api/Messages show add -j=false -y=false --no-helper --skip-template-engine" />
+      <command value="rails g controller api/Dialog show -j=false -y=false --no-helper --skip-template-engine" />
+      <command value="rails g model Comment post_id:bigint author_id:bigint text:text" />
     </option>
   </component>
   <component name="RunManager" selected="Rails.Development: SemenDiploma">
@@ -196,7 +208,8 @@
       <workItem from="1607177709901" duration="1779000" />
       <workItem from="1607181940735" duration="4053000" />
       <workItem from="1607193493111" duration="6984000" />
-      <workItem from="1607240168371" duration="20266000" />
+      <workItem from="1607240168371" duration="24221000" />
+      <workItem from="1607287378362" duration="688000" />
     </task>
     <servers />
   </component>
@@ -222,18 +235,18 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="ruby-line">
-          <url>file://$PROJECT_DIR$/app/controllers/api/auth_controller.rb</url>
-          <line>7</line>
+          <url>file://$PROJECT_DIR$/app/controllers/api/comments_controller.rb</url>
+          <line>45</line>
           <properties myBlockOrdinal="-1">
             <option name="block-ordinal" value="-1" />
           </properties>
-          <option name="timeStamp" value="12" />
+          <option name="timeStamp" value="13" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/SemenDiploma@Development__SemenDiploma.rcov" NAME="Development: SemenDiploma Coverage Results" MODIFIED="1607260685801" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="SemenDiploma" />
+    <SUITE FILE_PATH="coverage/SemenDiploma@Development__SemenDiploma.rcov" NAME="Development: SemenDiploma Coverage Results" MODIFIED="1607287763093" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="SemenDiploma" />
     <SUITE FILE_PATH="coverage/SemenDiploma@db_migrate.rcov" NAME="db:migrate Coverage Results" MODIFIED="1607181307985" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="SemenDiploma" />
     <SUITE FILE_PATH="coverage/SemenDiploma@Production__SemenDiploma.rcov" NAME="Production: SemenDiploma Coverage Results" MODIFIED="1607200707130" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="SemenDiploma" />
   </component>

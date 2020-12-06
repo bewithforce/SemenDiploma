@@ -63,6 +63,21 @@ class Api::ProfileController < ApplicationController
         render json: {}, status: 200
     end
 
+    def all
+        users = User.all
+
+        answer = []
+        users.each do |user|
+            user
+            photo = Photo.find_by_id(user.photo_id)
+            user_json = JSON.parse user.to_json(:only => [:id, :about, :birthday, :chess_level, :current_city, :current_country, :fide_rating, :hobbies, :name, :surname, :online, :study_place])
+            user_json[:photo] = photo.photo
+            answer.push(user_json)
+        end
+
+        render :json => answer, status: 200
+    end
+
     def photo
         user_id = params[:id]
         user = User.find_by_id(user_id)

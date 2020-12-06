@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_06_121328) do
+ActiveRecord::Schema.define(version: 2020_12_06_174005) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "comments", force: :cascade do |t|
+    t.bigint "post_id"
+    t.bigint "author_id"
+    t.text "text"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "dialogs", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -27,16 +35,16 @@ ActiveRecord::Schema.define(version: 2020_12_06_121328) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "friends", id: false, force: :cascade do |t|
-    t.bigint "user1_id"
-    t.bigint "user2_id"
+  create_table "messages", force: :cascade do |t|
+    t.bigint "dialog_id"
+    t.bigint "user_id"
+    t.text "text"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "messages", force: :cascade do |t|
-    t.bigint "dialog_id"
-    t.bigint "user_id"
+  create_table "news", force: :cascade do |t|
+    t.bigint "photo_id"
     t.text "text"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -52,7 +60,6 @@ ActiveRecord::Schema.define(version: 2020_12_06_121328) do
     t.bigint "owner_id"
     t.bigint "author_id"
     t.text "text"
-    t.bigint "photo_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

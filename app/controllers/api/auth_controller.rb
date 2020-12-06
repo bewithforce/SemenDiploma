@@ -27,6 +27,9 @@ class Api::AuthController < ApplicationController
 
 
     def me
+        cookies.each do |cookie|
+            puts cookie
+        end
         cookie = cookies[:auth_token]
         user = User.find_by_token(cookie)
         if user == nil

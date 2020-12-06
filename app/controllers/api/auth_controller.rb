@@ -19,20 +19,19 @@ class Api::AuthController < ApplicationController
         user.save
 
         cookies[:auth_token] = token
-        photo = Photo.find(user.photo_id)
-        answer = JSON.parse user.to_json(:only => [:about, :birthday, :chess_level, :current_city, :fide_rating, :hobbies, :name, :online, :photo_id, :study_place])
-        answer = answer.except("photo_id")
+        photo = Photo.find_by_id(user.photo_id)
+        answer = JSON.parse user.to_json(:only => [:about, :birthday, :chess_level, :current_city, :current_country, :fide_rating, :hobbies, :name, :surname, :online, :study_place])
         answer[:photo] = photo.photo
-        render :json => answer  , status: 200
+        render :json => answer, status: 200
     end
 
     def me
         cookie = cookies[:auth_token]
         user = User.find_by_token(cookie)
-        if user != nil
-            render json: {}, status: 200
-        else
+        if user == nil
             render json: {}, status: 403
+        else
+            render json: {}, status: 200
         end
     end
 

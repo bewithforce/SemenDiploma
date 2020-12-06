@@ -65,11 +65,11 @@ class Api::ProfileController < ApplicationController
 
     def photo
         user_id = params[:id]
-        user = User.find(user_id)
+        user = User.find_by_id(user_id)
         if user == nil
             render json: {}, status: 403
         else
-            photo = Photo.find(user.photo_id)
+            photo = Photo.find_by_id(user.photo_id)
             render json: { "photo": photo }, status: 200
         end
     end
@@ -83,9 +83,9 @@ class Api::ProfileController < ApplicationController
         end
         friends_records = Follower.where(user_id: user.id)
         friends_id = []
-        friends_records.each { |x|
+        friends_records.each do |x|
             friends_id.push({ user_id: x.following_id })
-        }
+        end
         render :json => friends_id.to_json, status: 200
     end
 
@@ -121,19 +121,18 @@ class Api::ProfileController < ApplicationController
         end
         following.where(following_id: target_id).delete_all
         render json: {}, status: 200
-        end
+    end
 
     def show
         user_id = params[:id]
-        user = User.find(user_id)
+        user = User.find_by_id(user_id)
         if user == nil
             render json: {}, status: 403
             return
         end
 
-        photo = Photo.find(user.photo_id)
-        answer = JSON.parse user.to_json(:only => [:about, :birthday, :chess_level, :current_city, :fide_rating, :hobbies, :name, :online, :photo_id, :study_place])
-        answer = answer.except("photo_id")
+        photo = Photo.find_by_id(user.photo_id)
+        answer = JSON.parse user.to_json(:only => [:about, :birthday, :chess_level, :current_city, :current_country, :fide_rating, :hobbies, :name, :surname, :online, :study_place])
         answer[:photo] = photo.photo
         render :json => answer, status: 200
     end

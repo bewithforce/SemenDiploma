@@ -15,9 +15,9 @@ Rails.application.routes.draw do
 
         # get 'photo/:id'
 
-        # get 'post/all/:id'
-        # get 'post/:id'
-        # post 'post/:id'
+        get 'post/all/:id' => 'posts#show_user'
+        get 'post/:id' => 'posts#index'
+        post 'post/:id/add' => 'posts#add'
 
         # get 'comments/:id'
         # post 'comments/:id'

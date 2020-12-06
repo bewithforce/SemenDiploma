@@ -81,13 +81,12 @@ class Api::ProfileController < ApplicationController
             render json: {}, status: 403
             return
         end
-        user_id = user.id
-        friends_records = Friend.where ["user1_id = :user1_id or user2_id = :user1_id", { user1_id: user_id, user2_id: user_id }]
+        friends_records = Follower.where(user_id: user.id)
         friends_id = []
         friends_records.each { |x|
-            x.user1_id == user_id ? friends_id.push({ user_id: x.user2_id }) : friends_id.push({ user_id: x.user1_id })
+            friends_id.push({ user_id: x.following_id })
         }
-        render :json => friends_records.to_json, status: 200
+        render :json => friends_id.to_json, status: 200
     end
 
     def subscribe

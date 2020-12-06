@@ -2,11 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a6fa3d6e-0e6c-4a46-8452-84e6d4de3bab" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/controllers/api/posts_controller.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/controllers/api/profile_controller.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/follower.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/migrate/20201206121328_create_followers.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/SemenDiploma.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/SemenDiploma.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gemfile" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/api/auth_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/api/auth_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/application.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/application.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/friend.rb" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/config/routes.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20201205120655_create_friends.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/schema.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/schema.rb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,6 +72,10 @@
       <command value="rails g controller api/Auth auth -j=false -y=false --no-helper " />
       <command value="rails d cotroller Auth" />
       <command value="rails g controller Main index -j=false" />
+      <command value="rails g controller api/Profile -j=false -y=false --no-helper --skip-template-engine" />
+      <command value="rails g controller api/Posts -j=false -y=false --no-helper --skip-template-engine" />
+      <command value="rails g model Follower user_id:bigint following_id:bigint" />
+      <command value="rails d model Friends" />
     </option>
   </component>
   <component name="RunManager" selected="Rails.Development: SemenDiploma">
@@ -193,7 +203,8 @@
       <workItem from="1607160508805" duration="7766000" />
       <workItem from="1607177709901" duration="1779000" />
       <workItem from="1607181940735" duration="4053000" />
-      <workItem from="1607193493111" duration="4947000" />
+      <workItem from="1607193493111" duration="6984000" />
+      <workItem from="1607240168371" duration="13608000" />
     </task>
     <servers />
   </component>
@@ -220,33 +231,17 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="ruby-line">
           <url>file://$PROJECT_DIR$/app/controllers/api/auth_controller.rb</url>
-          <line>31</line>
+          <line>7</line>
           <properties myBlockOrdinal="-1">
             <option name="block-ordinal" value="-1" />
           </properties>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="ruby-line">
-          <url>file://$PROJECT_DIR$/app/controllers/api/auth_controller.rb</url>
-          <line>41</line>
-          <properties myBlockOrdinal="-1">
-            <option name="block-ordinal" value="-1" />
-          </properties>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="ruby-line">
-          <url>file://$PROJECT_DIR$/app/controllers/api/auth_controller.rb</url>
-          <line>17</line>
-          <properties myBlockOrdinal="-1">
-            <option name="block-ordinal" value="-1" />
-          </properties>
-          <option name="timeStamp" value="4" />
+          <option name="timeStamp" value="12" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/SemenDiploma@Development__SemenDiploma.rcov" NAME="Development: SemenDiploma Coverage Results" MODIFIED="1607201438763" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="SemenDiploma" />
+    <SUITE FILE_PATH="coverage/SemenDiploma@Development__SemenDiploma.rcov" NAME="Development: SemenDiploma Coverage Results" MODIFIED="1607260685801" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="SemenDiploma" />
     <SUITE FILE_PATH="coverage/SemenDiploma@db_migrate.rcov" NAME="db:migrate Coverage Results" MODIFIED="1607181307985" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="SemenDiploma" />
     <SUITE FILE_PATH="coverage/SemenDiploma@Production__SemenDiploma.rcov" NAME="Production: SemenDiploma Coverage Results" MODIFIED="1607200707130" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="SemenDiploma" />
   </component>

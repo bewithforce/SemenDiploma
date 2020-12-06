@@ -1,4 +1,5 @@
 require 'securerandom'
+require 'json'
 
 class Api::AuthController < ApplicationController
     skip_before_action :verify_authenticity_token
@@ -7,19 +8,28 @@ class Api::AuthController < ApplicationController
         email = params['email']
         password = params['password']
         user = User.find_by_email(email)
-        if user.password != password
+        if user == nil or user.password != password
             render json: {}, status: 403
+            return
         end
 
         token = SecureRandom.hex
+        user.token = token
+        user.online = true
+        user.save
+
         cookies[:auth_token] = token
-        render json: user, status: 200
+        photo = Photo.find(user.photo_id)
+        answer = JSON.parse user.to_json(:only => [:about, :birthday, :chess_level, :current_city, :fide_rating, :hobbies, :name, :online, :photo_id, :study_place])
+        answer = answer.except("photo_id")
+        answer[:photo] = photo.photo
+        render :json => answer  , status: 200
     end
 
     def me
         cookie = cookies[:auth_token]
-        flag = User.where(["token=?", cookie]).length == 0 ? false : true
-        if flag
+        user = User.find_by_token(cookie)
+        if user != nil
             render json: {}, status: 200
         else
             render json: {}, status: 403
@@ -29,13 +39,27 @@ class Api::AuthController < ApplicationController
     def register
         email = params['email']
         password = params['password']
-        token = SecureRandom.hex
+        # token = SecureRandom.hex
         regex = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
         if (email =~ regex) != 0
             render json: {}, status: 403
         else
-            cookies[:auth_token] = token
-            User.create(email: email, password: password, token: token)
+            # cookies[:auth_token] = token
+            User.create(
+              about: "",
+              birthday: Date.new(1997, 6, 11),
+              chess_level: "",
+              current_city: "",
+              fide_rating: 0,
+              hobbies: "",
+              name: "",
+              photo_id: 0,
+              study_place: "",
+              email: email,
+              password: password,
+              online: false #,
+            # token: token
+            )
             render json: {}, status: 200
         end
     end
@@ -43,8 +67,11 @@ class Api::AuthController < ApplicationController
     def logout
         cookie = cookies[:auth_token]
         user = User.find_by_token(cookie)
-        user.token = ""
-        user.save
+        if user != nil
+            user.token = ""
+            user.online = false
+            user.save
+        end
         render json: {}, status: 200
     end
 end

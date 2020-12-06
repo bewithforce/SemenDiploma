@@ -4,13 +4,14 @@ Rails.application.routes.draw do
         post 'auth/login'
         get 'auth/me'
         get 'auth/register'
-        get 'auth/logout'
+        delete 'auth/logout'
 
-        # get 'profile/edit'
-        # get 'profile/:id'
-        # get 'profile/:id/friends'
-        # post 'profile/:id/subscribe'
-        # post 'profile/:id/unsubscribe'
+        get 'profile/edit'
+        get 'profile/:id/photo' => 'profile#photo'
+        get 'profile/friends' => 'profile#friends'
+        post 'profile/:id/subscribe' => 'profile#subscribe'
+        post 'profile/:id/unsubscribe' => 'profile#unsubscribe'
+        get 'profile/:id' => 'profile#show'
 
         # get 'photo/:id'
 

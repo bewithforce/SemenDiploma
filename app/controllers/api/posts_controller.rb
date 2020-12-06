@@ -74,4 +74,27 @@ class Api::PostsController < ApplicationController
         )
         render json: {}, status: 200
     end
+
+    def delete
+        post_id = params[:id]
+        post = Post.find_by_id(post_id)
+        if post == nil
+            render json: {}, status: 403
+            return
+        end
+
+        cookie = cookies[:auth_token]
+        user = User.find_by_token(cookie)
+        if user == nil
+            render json: {}, status: 403
+            return
+        end
+
+        if post.owner_id != user.id
+            render json: {}, status: 403
+            return
+        end
+
+        post.delete
+    end
 end

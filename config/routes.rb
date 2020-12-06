@@ -18,6 +18,7 @@ Rails.application.routes.draw do
         get 'post/all/:id' => 'posts#show_user'
         get 'post/:id' => 'posts#index'
         post 'post/:id/add' => 'posts#add'
+        delete 'post/:id' => 'posts#delete'
 
         # get 'comments/:id'
         # post 'comments/:id'

@@ -29,7 +29,6 @@ class Api::AuthController < ApplicationController
         render :json => answer, status: 200
     end
 
-
     def me
         cookies.each do |cookie|
             puts cookie
@@ -53,19 +52,20 @@ class Api::AuthController < ApplicationController
         else
             # cookies[:auth_token] = token
             User.create(
-              about: "",
-              birthday: Date.new(1997, 6, 11),
-              chess_level: "",
-              current_city: "",
-              fide_rating: 0,
-              hobbies: "",
-              name: "",
-              surname: "",
-              photo_id: 0,
-              study_place: "",
+              about: "Chess coach",
+              birthday: "June 16, 1997",
+              chess_level: "1st rank",
+              current_city: "Minsk",
+              current_country: 'Belarus',
+              fide_rating: 2000,
+              hobbies: "Chess",
+              name: "User",
+              surname: "User",
+              study_place: "BSUIR",
               email: email,
               password: password,
               online: false #,
+
             # token: token
             )
             render json: {}, status: 200

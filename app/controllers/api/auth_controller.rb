@@ -18,7 +18,10 @@ class Api::AuthController < ApplicationController
         user.online = true
         user.save
 
-        cookies[:auth_token] = token
+        cookies["auth_token"] = {
+          value: token,
+          same_site: "None"
+        }
         photo = Photo.find_by_id(user.photo_id)
         answer = JSON.parse user.to_json(:only => [:id, :email, :about, :birthday, :chess_level, :current_city, :current_country, :fide_rating, :hobbies, :name, :surname, :online, :study_place])
         answer[:photo] = photo.photo

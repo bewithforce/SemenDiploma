@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a6fa3d6e-0e6c-4a46-8452-84e6d4de3bab" name="Default Changelist" comment="" />
+    <list default="true" id="a6fa3d6e-0e6c-4a46-8452-84e6d4de3bab" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -87,9 +89,9 @@
       <EXTENSION ID="org.jetbrains.plugins.ruby.rails.run.RailsRunConfigurationExtension" SCRATCH_USE_RAILS_RUNNER="false" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="SCRIPT_ARGS" VALUE="" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="PORT" VALUE="3000" />
-      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="IP" VALUE="127.0.0.1" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="IP" VALUE="192.168.100.5" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="DUMMY_APP" VALUE="test/dummy" />
-      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="RAILS_SERVER_TYPE" VALUE="Default" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="RAILS_SERVER_TYPE" VALUE="default" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="ENVIRONMENT_TYPE" VALUE="development" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="LAUNCH_JS" VALUE="false" />
       <method v="2" />
@@ -178,6 +180,13 @@
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_OPTION_TESTOPTS" VALUE="" />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Rails.Development: SemenDiploma" />
+      <item itemvalue="Rails.Production: SemenDiploma" />
+      <item itemvalue="Rake.spec: SemenDiploma" />
+      <item itemvalue="Rake.test: SemenDiploma" />
+      <item itemvalue="Rake.db:migrate" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Rake.db:migrate" />
@@ -199,7 +208,9 @@
       <workItem from="1607181940735" duration="4053000" />
       <workItem from="1607193493111" duration="6984000" />
       <workItem from="1607240168371" duration="24221000" />
-      <workItem from="1607287378362" duration="4398000" />
+      <workItem from="1607287378362" duration="5707000" />
+      <workItem from="1607337978677" duration="1744000" />
+      <workItem from="1607355428447" duration="1806000" />
     </task>
     <servers />
   </component>
@@ -232,11 +243,19 @@
           </properties>
           <option name="timeStamp" value="13" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="ruby-line">
+          <url>file://$PROJECT_DIR$/app/controllers/api/auth_controller.rb</url>
+          <line>29</line>
+          <properties myBlockOrdinal="-1">
+            <option name="block-ordinal" value="-1" />
+          </properties>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/SemenDiploma@Development__SemenDiploma.rcov" NAME="Development: SemenDiploma Coverage Results" MODIFIED="1607291653703" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="SemenDiploma" />
+    <SUITE FILE_PATH="coverage/SemenDiploma@Development__SemenDiploma.rcov" NAME="Development: SemenDiploma Coverage Results" MODIFIED="1607356463542" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="SemenDiploma" />
     <SUITE FILE_PATH="coverage/SemenDiploma@db_migrate.rcov" NAME="db:migrate Coverage Results" MODIFIED="1607181307985" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="SemenDiploma" />
     <SUITE FILE_PATH="coverage/SemenDiploma@Production__SemenDiploma.rcov" NAME="Production: SemenDiploma Coverage Results" MODIFIED="1607200707130" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="SemenDiploma" />
   </component>

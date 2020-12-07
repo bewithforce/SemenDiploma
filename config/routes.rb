@@ -1,20 +1,4 @@
 Rails.application.routes.draw do
-  namespace :api do
-    get 'dialog/show'
-  end
-  namespace :api do
-    get 'messages/show'
-    get 'messages/add'
-  end
-  namespace :api do
-    get 'news/show'
-  end
-  namespace :api do
-    get 'comments/show'
-    get 'comments/add'
-    get 'comments/delete'
-  end
-    get 'main/index'
     namespace :api do
         post 'auth/login'
         get 'auth/me'

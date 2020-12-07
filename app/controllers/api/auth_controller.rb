@@ -38,7 +38,10 @@ class Api::AuthController < ApplicationController
         if user == nil
             render json: {}, status: 403
         else
-            render json: {}, status: 200
+            photo = Photo.find_by_id(user.photo_id)
+            answer = JSON.parse user.to_json(:only => [:id, :email, :about, :birthday, :chess_level, :current_city, :current_country, :fide_rating, :hobbies, :name, :surname, :online, :study_place])
+            answer[:photo] = photo.photo
+            render :json => answer, status: 200
         end
     end
 
@@ -65,7 +68,6 @@ class Api::AuthController < ApplicationController
               email: email,
               password: password,
               online: false #,
-
             # token: token
             )
             render json: {}, status: 200

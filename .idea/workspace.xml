@@ -4,6 +4,7 @@
     <list default="true" id="a6fa3d6e-0e6c-4a46-8452-84e6d4de3bab" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/api/auth_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/api/auth_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20201205125211_create_photos.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/migrate/20201205125211_create_photos.rb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -212,7 +213,7 @@
       <workItem from="1607287378362" duration="5707000" />
       <workItem from="1607337978677" duration="1744000" />
       <workItem from="1607355428447" duration="4462000" />
-      <workItem from="1607362156660" duration="598000" />
+      <workItem from="1607362156660" duration="1757000" />
     </task>
     <servers />
   </component>

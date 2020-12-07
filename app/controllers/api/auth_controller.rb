@@ -55,16 +55,17 @@ class Api::AuthController < ApplicationController
         else
             # cookies[:auth_token] = token
             User.create(
-              about: "Chess coach",
-              birthday: "June 16, 1997",
-              chess_level: "1st rank",
-              current_city: "Minsk",
+              about: 'Chess coach',
+              birthday: 'June 16, 1997',
+              chess_level: '1st rank',
+              current_city: 'Minsk',
               current_country: 'Belarus',
               fide_rating: 2000,
-              hobbies: "Chess",
-              name: "User",
-              surname: "User",
-              study_place: "BSUIR",
+              hobbies: 'Chess',
+              name: 'User',
+              surname: 'User',
+              study_place: 'BSUIR',
+              photo_id: 0,
               email: email,
               password: password,
               online: false #,
@@ -78,7 +79,7 @@ class Api::AuthController < ApplicationController
         cookie = cookies[:auth_token]
         user = User.find_by_token(cookie)
         if user != nil
-            user.token = ""
+            user.token = ''
             user.online = false
             user.save
         end

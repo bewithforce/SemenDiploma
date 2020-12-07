@@ -52,27 +52,38 @@ class Api::AuthController < ApplicationController
         regex = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
         if (email =~ regex) != 0
             render json: {}, status: 403
-        else
-            # cookies[:auth_token] = token
-            User.create(
-              about: 'Chess coach',
-              birthday: 'June 16, 1997',
-              chess_level: '1st rank',
-              current_city: 'Minsk',
-              current_country: 'Belarus',
-              fide_rating: 2000,
-              hobbies: 'Chess',
-              name: 'User',
-              surname: 'User',
-              study_place: 'BSUIR',
-              photo_id: 0,
-              email: email,
-              password: password,
-              online: false #,
-            # token: token
-            )
-            render json: {}, status: 200
+            return
         end
+
+        user = User.find_by_email(email)
+        if (email =~ regex) != 0
+            render json: { error: "Bad email" }, status: 403
+            return
+        end
+
+        if user != nil
+            render json: { error: "This email is already used" }, status: 403
+            return
+        end
+
+        User.create(
+          about: 'Chess coach',
+          birthday: 'June 16, 1997',
+          chess_level: '1st rank',
+          current_city: 'Minsk',
+          current_country: 'Belarus',
+          fide_rating: 2000,
+          hobbies: 'Chess',
+          name: 'User',
+          surname: 'User',
+          study_place: 'BSUIR',
+          photo_id: 0,
+          email: email,
+          password: password,
+          online: false #,
+        # token: token
+        )
+        render json: {}, status: 200
     end
 
     def logout

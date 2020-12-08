@@ -46,8 +46,8 @@ class Api::PostsController < ApplicationController
             render :json => post.to_json(:only => [:author_id, :owner_id, :text]), status: 200
         end
 =end
-        time =  post.created_at.strftime('%a, %d %Y %k:%M')
-        answer = post.to_json(:only => [:author_id, :owner_id, :text])
+        time =  post.created_at.strftime('%a, %d %b %Y %k:%M')
+        answer = JSON.parse post.to_json(:only => [:author_id, :owner_id, :text])
         answer[:time] = time
         render :json => answer, status: 200
     end
@@ -74,8 +74,8 @@ class Api::PostsController < ApplicationController
           # photo_id: photo_id,
           text: params[:text]
         )
-        time =  post.created_at.strftime('%a, %d %Y %k:%M')
-        answer = post.to_json(:only => [:author_id, :owner_id, :text])
+        time =  post.created_at.strftime('%a, %d %b %Y %k:%M')
+        answer = JSON.parse post.to_json(:only => [:author_id, :owner_id, :text])
         answer[:time] = time
         render :json => answer, status: 200
         render json: {}, status: 200

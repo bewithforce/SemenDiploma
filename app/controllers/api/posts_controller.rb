@@ -26,6 +26,10 @@ class Api::PostsController < ApplicationController
             answer.push(post_json)
         end
 
+        answer.sort do |a, b|
+            a[:id] <=> b[:id]
+        end
+
         render :json => answer, status: 200
     end
 

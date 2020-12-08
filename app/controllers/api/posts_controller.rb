@@ -15,7 +15,7 @@ class Api::PostsController < ApplicationController
         posts.each do |post|
             # Sat, 05 Dec 2020 20:49
             time =  post.created_at.strftime('%a, %d %b %Y %k:%M')
-            post_json = JSON.parse post.to_json(:only => [:author_id, :owner_id, :text])
+            post_json = JSON.parse post.to_json(:only => [:id, :author_id, :owner_id, :text])
             post_json[:time] = time
 =begin
             if post.photo_id != 0
@@ -47,7 +47,7 @@ class Api::PostsController < ApplicationController
         end
 =end
         time =  post.created_at.strftime('%a, %d %b %Y %k:%M')
-        answer = JSON.parse post.to_json(:only => [:author_id, :owner_id, :text])
+        answer = JSON.parse post.to_json(:only => [:id, :author_id, :owner_id, :text])
         answer[:time] = time
         render :json => answer, status: 200
     end
@@ -75,7 +75,7 @@ class Api::PostsController < ApplicationController
           text: params[:text]
         )
         time =  post.created_at.strftime('%a, %d %b %Y %k:%M')
-        answer = JSON.parse post.to_json(:only => [:author_id, :owner_id, :text])
+        answer = JSON.parse post.to_json(:only => [:id, :author_id, :owner_id, :text])
         answer[:time] = time
         render :json => answer, status: 200
         render json: {}, status: 200

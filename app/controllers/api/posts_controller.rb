@@ -82,7 +82,6 @@ class Api::PostsController < ApplicationController
         answer = JSON.parse post.to_json(:only => [:id, :author_id, :owner_id, :text])
         answer[:time] = time
         render :json => answer, status: 200
-        render json: {}, status: 200
     end
 
     def delete

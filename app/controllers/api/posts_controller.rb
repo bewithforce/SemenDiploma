@@ -14,7 +14,7 @@ class Api::PostsController < ApplicationController
         answer = []
         posts.each do |post|
             # Sat, 05 Dec 2020 20:49
-            time =  post.created_at.strftime('%a, %d %Y %k:%M')
+            time =  post.created_at.strftime('%a, %d %b %Y %k:%M')
             post_json = JSON.parse post.to_json(:only => [:author_id, :owner_id, :text])
             post_json[:time] = time
 =begin

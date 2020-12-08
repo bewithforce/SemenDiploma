@@ -1,3 +1,5 @@
+require 'time'
+
 class Api::PostsController < ApplicationController
     skip_before_action :verify_authenticity_token
 
@@ -11,7 +13,10 @@ class Api::PostsController < ApplicationController
         posts = Post.where(owner_id: user.id)
         answer = []
         posts.each do |post|
-            post_json = post.to_json(:only => [:author_id, :owner_id, :text, :created_at])
+            # Sat, 05 Dec 2020 20:49
+            time =  post.created_at.strftime('%a, %d %Y %k:%M')
+            post_json = post.to_json(:only => [:author_id, :owner_id, :text])
+            post_json[:time] = time
 =begin
             if post.photo_id != 0
                 photo = Photo.find_by_id(post.photo_id)
@@ -41,7 +46,10 @@ class Api::PostsController < ApplicationController
             render :json => post.to_json(:only => [:author_id, :owner_id, :text]), status: 200
         end
 =end
-        render :json => post.to_json(:only => [:id, :author_id, :text]), status: 200
+        time =  post.created_at.strftime('%a, %d %Y %k:%M')
+        answer = post.to_json(:only => [:author_id, :owner_id, :text])
+        answer[:time] = time
+        render :json => answer, status: 200
     end
 
     def add
@@ -60,12 +68,16 @@ class Api::PostsController < ApplicationController
             photo_id = Photo.create(photo: encoded).id
         end
 =end
-        Post.create(
+        post = Post.create(
           author_id: user.id,
           owner_id: params[:id],
           # photo_id: photo_id,
           text: params[:text]
         )
+        time =  post.created_at.strftime('%a, %d %Y %k:%M')
+        answer = post.to_json(:only => [:author_id, :owner_id, :text])
+        answer[:time] = time
+        render :json => answer, status: 200
         render json: {}, status: 200
     end
 

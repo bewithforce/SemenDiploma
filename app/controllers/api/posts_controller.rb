@@ -15,7 +15,7 @@ class Api::PostsController < ApplicationController
         posts.each do |post|
             # Sat, 05 Dec 2020 20:49
             time =  post.created_at.strftime('%a, %d %Y %k:%M')
-            post_json = post.to_json(:only => [:author_id, :owner_id, :text])
+            post_json = JSON.parse post.to_json(:only => [:author_id, :owner_id, :text])
             post_json[:time] = time
 =begin
             if post.photo_id != 0

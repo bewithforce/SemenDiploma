@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a6fa3d6e-0e6c-4a46-8452-84e6d4de3bab" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/api/auth_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/api/auth_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/api/profile_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/api/profile_controller.rb" afterDir="false" />
-    </list>
+    <list default="true" id="a6fa3d6e-0e6c-4a46-8452-84e6d4de3bab" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -224,7 +220,7 @@
       <workItem from="1607422350563" duration="10564000" />
       <workItem from="1607510525333" duration="595000" />
       <workItem from="1607593378313" duration="1192000" />
-      <workItem from="1607673103744" duration="4583000" />
+      <workItem from="1607673103744" duration="4886000" />
     </task>
     <servers />
   </component>
@@ -265,11 +261,27 @@
           </properties>
           <option name="timeStamp" value="17" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="ruby-line">
+          <url>file://$PROJECT_DIR$/app/controllers/api/profile_controller.rb</url>
+          <line>92</line>
+          <properties myBlockOrdinal="-1">
+            <option name="block-ordinal" value="-1" />
+          </properties>
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="ruby-line">
+          <url>file://$PROJECT_DIR$/app/controllers/api/profile_controller.rb</url>
+          <line>110</line>
+          <properties myBlockOrdinal="-1">
+            <option name="block-ordinal" value="-1" />
+          </properties>
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/SemenDiploma@Development__SemenDiploma.rcov" NAME="Development: SemenDiploma Coverage Results" MODIFIED="1607718464656" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="SemenDiploma" />
+    <SUITE FILE_PATH="coverage/SemenDiploma@Development__SemenDiploma.rcov" NAME="Development: SemenDiploma Coverage Results" MODIFIED="1607718805712" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="SemenDiploma" />
     <SUITE FILE_PATH="coverage/SemenDiploma@db_migrate.rcov" NAME="db:migrate Coverage Results" MODIFIED="1607181307985" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="SemenDiploma" />
     <SUITE FILE_PATH="coverage/SemenDiploma@Production__SemenDiploma.rcov" NAME="Production: SemenDiploma Coverage Results" MODIFIED="1607200707130" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="SemenDiploma" />
   </component>

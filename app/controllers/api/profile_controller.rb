@@ -91,6 +91,7 @@ class Api::ProfileController < ApplicationController
 
     def friends
         cookie = cookies[:auth_token]
+        puts cookie
         user = User.find_by_token(cookie)
         if user == nil
             render json: {}, status: 403

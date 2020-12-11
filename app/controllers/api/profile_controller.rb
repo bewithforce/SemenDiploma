@@ -97,11 +97,14 @@ class Api::ProfileController < ApplicationController
             return
         end
         friends_records = Follower.where(user_id: user.id)
-        friends_id = []
+        answer = []
         friends_records.each do |x|
-            friends_id.push({ user_id: x.following_id })
+            friend = get_user_by_id(x.following_id)
+            if friend != nil
+                answer.push(friend)
+            end
         end
-        render :json => friends_id.to_json, status: 200
+        render :json => answer.to_json, status: 200
     end
 
     def subscribe
@@ -140,15 +143,22 @@ class Api::ProfileController < ApplicationController
 
     def show
         user_id = params[:id]
-        user = User.find_by_id(user_id)
-        if user == nil
-            render json: {}, status: 403
-            return
-        end
-
-        photo = Photo.find_by_id(user.photo_id)
-        answer = JSON.parse user.to_json(:only => [:about, :birthday, :chess_level, :current_city, :current_country, :fide_rating, :hobbies, :name, :surname, :online, :study_place])
-        answer[:photo] = photo.photo
+        answer = get_user_by_id user_id
         render :json => answer, status: 200
+    end
+
+    def settings
+
+    end
+
+    def get_user_by_id(id)
+        user = User.find_by_id(id)
+        if user == nil
+            return nil
+        end
+        photo = Photo.find_by_id(user.photo_id)
+        answer = JSON.parse user.to_json(:only => [:email, :about, :birthday, :chess_level, :current_city, :current_country, :fide_rating, :hobbies, :name, :surname, :online, :study_place])
+        answer[:photo] = photo.photo
+        answer
     end
 end

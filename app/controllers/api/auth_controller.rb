@@ -46,8 +46,10 @@ class Api::AuthController < ApplicationController
     end
 
     def register
-        email = params['email']
-        password = params['password']
+        email = params['email'] != nil ? params['email'] : ""
+        password = params['password'] != nil ? params['password'] : ""
+        name = params['name'] != nil ? params['name'] : ""
+        surname = params['surname'] != nil ? params['surname'] : ""
         # token = SecureRandom.hex
         regex = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
         if (email =~ regex) != 0
@@ -74,8 +76,8 @@ class Api::AuthController < ApplicationController
           current_country: 'Belarus',
           fide_rating: 2000,
           hobbies: 'Chess',
-          name: 'User',
-          surname: 'User',
+          name: name,
+          surname: surname,
           study_place: 'BSUIR',
           photo_id: 0,
           email: email,

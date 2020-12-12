@@ -5,7 +5,9 @@ Rails.application.routes.draw do
         get 'auth/register'
         delete 'auth/logout'
 
-        get 'profile/edit'
+        get 'profile/edit' => 'profile#edit'
+        post 'profile/edit' => 'profile#settings'
+        post 'profile/password' => 'profile#edit_password'
         get 'profile/all'
         get 'profile/friends' => 'profile#friends'
         post 'profile/:id/subscribe' => 'profile#subscribe'

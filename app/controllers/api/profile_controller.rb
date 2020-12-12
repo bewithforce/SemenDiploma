@@ -64,7 +64,20 @@ class Api::ProfileController < ApplicationController
     end
 
     def edit_password
-
+        token = cookies[:auth_token]
+        user = User.find_by_token(token)
+        if user == nil
+            render json: {}, status: 403
+            return
+        end
+        old_password = params[:old_password]
+        if user.password != old_password
+            render json: {}, status: 403
+            return
+        end
+        user.password = params[:new_password]
+        user.save
+        render json: {}, status: 200
     end
 
     def all

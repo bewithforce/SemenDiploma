@@ -2,32 +2,34 @@ class Api::CommentsController < ApplicationController
     skip_before_action :verify_authenticity_token
 
     def show
-        post_id = params[:id]
-        post = Post.find_by_id(post_id)
-        if post == nil
+        news_id = params[:id]
+        news = News.find_by_id(news_id)
+        if news == nil
             render json: {}, status: 403
             return
         end
 
-        comments = Comment.where(post_id: post_id)
+        comments = Comment.where(news_id: news_id)
 
         answer = []
         comments.each do |comment|
-            answer.push(comment.to_json(:only => [:id, :author_id, :text, :created_at]))
+            record = JSON.parse comment.to_json(:only => [:id, :news_id, :author_id, :text])
+            record[:time] = comment.created_at.localtime.strftime('%a, %d %b %Y %k:%M')
+            answer.push(record)
         end
         render :json => answer, status: 200
     end
 
     def add
-        post_id = params[:id]
-        post = Post.find_by_id(post_id)
-        if post == nil
+        news_id = params[:id]
+        news = Post.find_by_id(news_id)
+        if news == nil
             render json: {}, status: 403
             return
         end
 
-        cookie = cookies[:auth_token]
-        user = User.find_by_token(cookie)
+        token = cookies[:auth_token]
+        user = User.find_by_token(token)
         if user == nil
             render json: {}, status: 403
             return
@@ -38,8 +40,10 @@ class Api::CommentsController < ApplicationController
             return
         end
 
-        Comment.create(author_id: user.id, post_id: post_id, text: params[:post])
-        render json: {}, status: 200
+        comment = Comment.create(author_id: user.id, news_id: news_id, text: params[:post])
+        answer = JSON.parse comment.to_json(:only => [:id, :news_id, :author_id, :text])
+        answer[:time] = comment.created_at.localtime.strftime('%a, %d %b %Y %k:%M')
+        render :json => answer, status: 200
     end
 
     def delete

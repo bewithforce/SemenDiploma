@@ -64,8 +64,8 @@ class Api::ProfileController < ApplicationController
     end
 
     def all
-        # token = cookies[:auth_token]
-        # self_user = User.find_by_token(token)
+        token = cookies[:auth_token]
+        self_id = User.find_by_token(token).id
 
         users = User.all
 
@@ -73,7 +73,8 @@ class Api::ProfileController < ApplicationController
         users.each do |user|
             user
             photo = Photo.find_by_id(user.photo_id)
-            user_json = JSON.parse user.to_json(:only => [:id, :about, :birthday, :chess_level, :current_city, :current_country, :fide_rating, :hobbies, :name, :surname, :online, :study_place])
+            user_json = JSON.parse user.to_json(:only => [:id, :email, :about, :birthday, :chess_level, :current_city, :current_country, :fide_rating, :hobbies, :name, :surname, :online, :study_place])
+            user_json[:isFollowing] = is_following(self_id, user.id)
             user_json[:photo] = photo.photo
             answer.push(user_json)
         end

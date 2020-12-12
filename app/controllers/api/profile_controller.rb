@@ -89,6 +89,7 @@ class Api::ProfileController < ApplicationController
             return
         end
 
+        answer = []
         friends_records = Follower.where(user_id: user.id)
         friends_records.each do |x|
             friend = get_user_by_id(x.following_id, user.id)

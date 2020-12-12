@@ -4,8 +4,8 @@ class Api::ProfileController < ApplicationController
     skip_before_action :verify_authenticity_token
 
     def edit
-        cookie = cookies[:auth_token]
-        user = User.find_by_token(cookie)
+        token = cookies[:auth_token]
+        user = User.find_by_token(token)
         if user == nil
             render json: {}, status: 403
             return
@@ -64,6 +64,9 @@ class Api::ProfileController < ApplicationController
     end
 
     def all
+        # token = cookies[:auth_token]
+        # self_user = User.find_by_token(token)
+
         users = User.all
 
         answer = []
@@ -78,29 +81,17 @@ class Api::ProfileController < ApplicationController
         render :json => answer, status: 200
     end
 
-    def photo
-        user_id = params[:id]
-        user = User.find_by_id(user_id)
-        if user == nil
-            render json: {}, status: 403
-        else
-            photo = Photo.find_by_id(user.photo_id)
-            render json: { "photo": photo }, status: 200
-        end
-    end
-
     def friends
-        cookie = cookies[:auth_token]
-        puts cookie
-        user = User.find_by_token(cookie)
+        token = cookies[:auth_token]
+        user = User.find_by_token(token)
         if user == nil
             render json: {}, status: 403
             return
         end
+
         friends_records = Follower.where(user_id: user.id)
-        answer = []
         friends_records.each do |x|
-            friend = get_user_by_id(x.following_id)
+            friend = get_user_by_id(x.following_id, user.id)
             if friend != nil
                 answer.push(friend)
             end
@@ -109,8 +100,8 @@ class Api::ProfileController < ApplicationController
     end
 
     def subscribe
-        cookie = cookies[:auth_token]
-        user = User.find_by_token(cookie)
+        token = cookies[:auth_token]
+        user = User.find_by_token(token)
         if user == nil
             render json: {}, status: 403
             return
@@ -126,8 +117,8 @@ class Api::ProfileController < ApplicationController
     end
 
     def unsubscribe
-        cookie = cookies[:auth_token]
-        user = User.find_by_token(cookie)
+        token = cookies[:auth_token]
+        user = User.find_by_token(token)
         if user == nil
             render json: {}, status: 403
             return
@@ -143,23 +134,48 @@ class Api::ProfileController < ApplicationController
     end
 
     def show
+        token = cookies[:auth_token]
+        user = User.find_by_token(token)
+
         user_id = params[:id]
-        answer = get_user_by_id user_id
+        answer = get_user_by_id(user_id, user.id)
         render :json => answer, status: 200
     end
 
     def settings
+        token = cookies[:auth_token]
+        user = User.find_by_token(token)
 
+        if user == nil
+            render json: {}, status: 403
+            return
+        end
+        render :json => user, status: 200
     end
 
-    def get_user_by_id(id)
+    def get_user_by_id(id, self_id)
         user = User.find_by_id(id)
         if user == nil
             return nil
         end
         photo = Photo.find_by_id(user.photo_id)
-        answer = JSON.parse user.to_json(:only => [:email, :about, :birthday, :chess_level, :current_city, :current_country, :fide_rating, :hobbies, :name, :surname, :online, :study_place])
+        answer = JSON.parse user.to_json(:only => [:email, :id, :about, :birthday, :chess_level, :current_city, :current_country, :fide_rating, :hobbies, :name, :surname, :online, :study_place])
+        if id == self_id
+            answer[:isFollowing] = false
+        else
+            answer[:isFollowing] = is_following(self_id, id)
+        end
         answer[:photo] = photo.photo
         answer
+    end
+
+    def is_following(my_id, aim_id)
+        flag = Follower.where(user_id: my_id)
+        if flag == nil
+            return false
+        end
+        # flag.where(following_id: my_id)
+        flag = flag.find_by_following_id(aim_id)
+        flag == nil ? false : true
     end
 end

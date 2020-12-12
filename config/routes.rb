@@ -7,7 +7,6 @@ Rails.application.routes.draw do
 
         get 'profile/edit'
         get 'profile/all'
-        get 'profile/:id/photo' => 'profile#photo'
         get 'profile/friends' => 'profile#friends'
         post 'profile/:id/subscribe' => 'profile#subscribe'
         post 'profile/:id/unsubscribe' => 'profile#unsubscribe'

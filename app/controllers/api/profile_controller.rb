@@ -74,7 +74,7 @@ class Api::ProfileController < ApplicationController
             user
             photo = Photo.find_by_id(user.photo_id)
             user_json = JSON.parse user.to_json(:only => [:id, :email, :about, :birthday, :chess_level, :current_city, :current_country, :fide_rating, :hobbies, :name, :surname, :online, :study_place])
-            user_json[:isFollowing] = is_following(self_id, user.id)
+            user_json[:isFollowed] = is_following(self_id, user.id)
             user_json[:photo] = photo.photo
             answer.push(user_json)
         end
@@ -144,6 +144,10 @@ class Api::ProfileController < ApplicationController
 
         user_id = params[:id]
         answer = get_user_by_id(user_id, user.id)
+        if answer == nil
+            render :json => {}, status: 403
+            return
+        end
         render :json => answer, status: 200
     end
 
@@ -166,9 +170,9 @@ class Api::ProfileController < ApplicationController
         photo = Photo.find_by_id(user.photo_id)
         answer = JSON.parse user.to_json(:only => [:email, :id, :about, :birthday, :chess_level, :current_city, :current_country, :fide_rating, :hobbies, :name, :surname, :online, :study_place])
         if id == self_id
-            answer[:isFollowing] = false
+            answer[:isFollowed] = false
         else
-            answer[:isFollowing] = is_following(self_id, id)
+            answer[:isFollowed] = is_following(self_id, id)
         end
         answer[:photo] = photo.photo
         answer

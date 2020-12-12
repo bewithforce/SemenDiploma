@@ -16,7 +16,7 @@ class Api::ProfileController < ApplicationController
         end
 
         if params[:password] != nil
-            user.email = params[:email]
+            user.password = params[:password]
         end
 
         if params[:name] != nil
@@ -61,6 +61,10 @@ class Api::ProfileController < ApplicationController
 
         user.save
         render json: {}, status: 200
+    end
+
+    def edit_password
+
     end
 
     def all

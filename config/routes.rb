@@ -26,6 +26,12 @@ Rails.application.routes.draw do
         # get 'messages'
         # get 'messages/:id'
         # post 'messages/:id'
+        #
+        #
+        #
+
+        get 'news/all' => 'news#all'
+        get 'news/:id' => 'news#show'
     end
     root 'main#index'
     get '/*path' => 'main#index'

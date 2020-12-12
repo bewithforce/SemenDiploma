@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 2020_12_06_174005) do
   enable_extension "plpgsql"
 
   create_table "comments", force: :cascade do |t|
-    t.bigint "post_id"
+    t.bigint "news_id"
     t.bigint "author_id"
     t.text "text"
     t.datetime "created_at", precision: 6, null: false
@@ -46,12 +46,15 @@ ActiveRecord::Schema.define(version: 2020_12_06_174005) do
   create_table "news", force: :cascade do |t|
     t.bigint "photo_id"
     t.text "text"
+    t.text "tags"
+    t.text "title"
+    t.text "summary"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "photos", force: :cascade do |t|
-    t.binary "photo"
+    t.text "photo"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -99,7 +99,7 @@ class Api::PostsController < ApplicationController
             return
         end
 
-        if post.owner_id != user.id
+        if post.owner_id != user.id && post.author_id != user.id
             render json: {}, status: 403
             return
         end

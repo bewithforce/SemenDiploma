@@ -112,7 +112,10 @@ class Api::ProfileController < ApplicationController
             render json: {}, status: 403
             return
         end
-        Follower.create(user_id: user.id, following_id: target_id)
+
+        if is_following(user.id, target_id)
+            Follower.create(user_id: user.id, following_id: target_id)
+        end
         render json: {}, status: 200
     end
 

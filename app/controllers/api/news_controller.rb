@@ -35,7 +35,7 @@ class Api::NewsController < ApplicationController
             return nil
         end
         photo = Photo.find_by_id(news.photo_id).photo
-        answer = news.to_json(:only => [:id, :tag, :title, :summary, :text])
+        answer = JSON.parse news.to_json(:only => [:id, :tag, :title, :summary, :text])
         answer[:time] = news.created_at.localtime.strftime('%a, %d %b %Y %k:%M')
         answer[:photo] = photo
         answer

@@ -7,6 +7,7 @@ class Api::DialogsController < ApplicationController
             dialog = JSON.parse Dialog.find_by_id(dialog_id).to_json(:only => [:id])
             another_user_id = UsersToDialog.where(dialog_id: dialog_id).reject { |c| c.user_id == user.id }[0]
             another_user = User.find_by_id(another_user_id)
+            dialog[:another_user_id] = another_user.id
             dialog[:another_user_name] = another_user.name
             dialog[:another_user_surname] = another_user.surname
             photo = Photo.find_by_id(another_user.photo_id)

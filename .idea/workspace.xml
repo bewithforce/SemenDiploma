@@ -3,7 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="a6fa3d6e-0e6c-4a46-8452-84e6d4de3bab" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/channels/application_cable/connection.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/channels/application_cable/connection.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/channels/chat_channel.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/channels/chat_channel.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/environments/development.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/environments/development.rb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -225,7 +227,7 @@
       <workItem from="1607593378313" duration="1192000" />
       <workItem from="1607673103744" duration="6012000" />
       <workItem from="1607755454976" duration="14166000" />
-      <workItem from="1607848195104" duration="26124000" />
+      <workItem from="1607848195104" duration="31391000" />
     </task>
     <servers />
   </component>
@@ -258,6 +260,14 @@
           </properties>
           <option name="timeStamp" value="18" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="ruby-line">
+          <url>file://$PROJECT_DIR$/app/channels/chat_channel.rb</url>
+          <line>30</line>
+          <properties myBlockOrdinal="-1">
+            <option name="block-ordinal" value="-1" />
+          </properties>
+          <option name="timeStamp" value="29" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <pin-to-top-manager>
@@ -267,7 +277,7 @@
     </pin-to-top-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/SemenDiploma@Development__SemenDiploma.rcov" NAME="Development: SemenDiploma Coverage Results" MODIFIED="1607886117811" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="SemenDiploma" />
+    <SUITE FILE_PATH="coverage/SemenDiploma@Development__SemenDiploma.rcov" NAME="Development: SemenDiploma Coverage Results" MODIFIED="1607897303351" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="SemenDiploma" />
     <SUITE FILE_PATH="coverage/SemenDiploma@db_migrate.rcov" NAME="db:migrate Coverage Results" MODIFIED="1607181307985" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="SemenDiploma" />
     <SUITE FILE_PATH="coverage/SemenDiploma@Production__SemenDiploma.rcov" NAME="Production: SemenDiploma Coverage Results" MODIFIED="1607200707130" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="SemenDiploma" />
   </component>

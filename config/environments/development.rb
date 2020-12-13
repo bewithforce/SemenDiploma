@@ -1,5 +1,10 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
+  #
+
+  config.web_socket_server_url = 'ws://127.0.0.1:3000/cable'
+  config.action_cable.allowed_request_origins = %w[chrome://new-tab-page]
+
 
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development

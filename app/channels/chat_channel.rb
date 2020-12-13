@@ -1,42 +1,35 @@
 class ChatChannel < ApplicationCable::Channel
 
     def subscribed
-        ApplicationCable::Connection.
-          if params[:room_id].present?
+        sender = User.find_by_id(params[:sender_id])
+        receiver = User.find_by_id(params[:receiver_id])
 
-        # creates a private chat room with a unique name
-        stream_from("ChatRoom-#{(params[:room_id])}")
+        dialog = UsersToDialog.where(user_id: sender.id).reject do |x|
+            another = UsersToDialog.where(dialog_id: x.dialog_id)
+            another.reject { |c| c.user_id == sender.id }
+            another.find_by_user_id(receiver.id)
+        end[0]
+
+        if dialog == nil
+            dialog = Dialog.create
+            UsersToDialog.create(user_id: sender.id, dialog_id: dialog.id)
+            UsersToDialog.create(user_id: receiver.id, dialog_id: dialog.id)
+        end
+
+        messages = Message.where(dialog_id: dialog.id)
+        answer = []
+        if messages != nil
+            messages.each do |x|
+                answer.push JSON.parse x.to_json(:only => [:user_id, :dialog_id, :text])
+            end
+        end
+        stream_from("dialog #{dialog}")
+        ActionCable.server.broadcast "dialog #{dialog}", json: answer
     end
 
-    # calls when a client broadcasts data
     def speak(data)
-        sender = get_sender(data)
-        room_id = data['room_id']
-        message = data['message']
-
-        raise 'No room_id!' if room_id.blank?
-        convo = get_convo(room_id) # A conversation is a room
-        raise 'No conversation found!' if convo.blank?
-        raise 'No message!' if message.blank?
-
-        # adds the message sender to the conversation if not already included
-        convo.users << sender unless convo.users.include?(sender)
-        # saves the message and its data to the DB
-        # Note: this does not broadcast to the clients yet!
-        Message.create!(
-          conversation: convo,
-          sender: sender,
-          content: message
-        )
-    end
-
-    # Helpers
-
-    def get_convo(room_code)
-        Conversation.find_by(room_code: room_code)
-    end
-
-    def get_sender
-        User.find_by(guid: id)
+        message = Message.create(user_id: data["sender_id"], dialog_id: data["dialog_id"], text: data["text"])
+        answer = JSON.parse message.to_json(:only => [:user_id, :dialog_id, :text])
+        ActionCable.server.broadcast "dialog #{message.dialog_id}", json: answer
     end
 end

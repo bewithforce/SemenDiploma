@@ -17,7 +17,7 @@ class Api::CommentsController < ApplicationController
         end
 
         answer.sort do |a, b|
-            Date.parse(a[:time]) <=> Date.parse(b[:time])
+            Date.parse(b[:time]) <=> Date.parse(a[:time])
         end
         render :json => answer, status: 200
     end

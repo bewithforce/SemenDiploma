@@ -1,4 +1,6 @@
 class Api::DialogsController < ApplicationController
-  def show
-  end
+    def all
+        token = cookies[:auth_token]
+        user = User.find_by_token(token)
+    end
 end

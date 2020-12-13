@@ -20,12 +20,7 @@ class Api::NewsController < ApplicationController
 
         answer = []
         news.each do |record|
-            photo = Photo.find_by_id(record.photo_id).photo
-            record_json = JSON.parse record.to_json(:only => [:id, :tag, :title, :summary])
-            record_json[:text] = record.text.split("\n")
-            record_json[:time] = record.created_at.localtime.strftime('%a, %d %b %Y %k:%M')
-            record_json[:photo] = photo
-            answer.push(record_json)
+            answer.push(get_news_from_record(record))
         end
         render json: answer, status: 200
     end
@@ -35,10 +30,16 @@ class Api::NewsController < ApplicationController
         if news == nil
             return nil
         end
-        photo = Photo.find_by_id(news.photo_id).photo
-        answer = JSON.parse news.to_json(:only => [:id, :tag, :title, :summary])
-        answer[:text] = news.text.split("\n")
-        answer[:time] = news.created_at.localtime.strftime('%a, %d %b %Y %k:%M')
+        get_news_from_record(news)
+    end
+
+    def get_news_from_record(record)
+        photo = Photo.find_by_id(record.photo_id).photo
+        answer = JSON.parse record.to_json(:only => [:id, :tag, :title, :summary])
+        text = record.text.split("\n")
+        text.reject { |c| c.empty? }
+        answer[:text] = text
+        answer[:time] = record.created_at.localtime.strftime('%a, %d %b %Y %k:%M')
         answer[:photo] = photo
         answer
     end

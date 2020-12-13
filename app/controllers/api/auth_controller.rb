@@ -20,7 +20,7 @@ class Api::AuthController < ApplicationController
 
         cookies["auth_token"] = {
           value: token,
-          secure: true,
+          # secure: true,
           same_site: "None"
         }
         photo = Photo.find_by_id(user.photo_id)

@@ -22,7 +22,7 @@ class Api::CommentsController < ApplicationController
 
     def add
         news_id = params[:id]
-        news = Post.find_by_id(news_id)
+        news = News.find_by_id(news_id)
         if news == nil
             render json: {}, status: 403
             return
@@ -40,7 +40,7 @@ class Api::CommentsController < ApplicationController
             return
         end
 
-        comment = Comment.create(author_id: user.id, news_id: news_id, text: params[:post])
+        comment = Comment.create(author_id: user.id, news_id: news_id, text: params[:text])
         answer = JSON.parse comment.to_json(:only => [:id, :news_id, :author_id, :text])
         answer[:time] = comment.created_at.localtime.strftime('%a, %d %b %Y %k:%M')
         render :json => answer, status: 200

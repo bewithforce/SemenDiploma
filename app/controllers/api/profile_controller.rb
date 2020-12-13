@@ -11,11 +11,15 @@ class Api::ProfileController < ApplicationController
             return
         end
 
-        if params[:name] != nil
+        if params[:name] != nil && params[:name].strip.length != 0
             user.name = params[:name]
         end
 
-        if params[:photo] != nil
+        if params[:surname] != nil && params[:surname].strip.length != 0
+            user.surname = params[:surname]
+        end
+
+        if params[:photo] != nil && params[:photo].strip.length != 0
             # file = params[:photo]
             # content = File.binread(file)
             # encoded = Base64.encode64(content).to_s
@@ -24,31 +28,35 @@ class Api::ProfileController < ApplicationController
             user.photo_id = photo_id
         end
 
-        if params[:birthday] != nil
+        if params[:birthday] != nil && params[:birthday].strip.length != 0
             user.birthday = params[:birthday]
         end
 
-        if params[:current_city] != nil
+        if params[:current_city] != nil && params[:current_city].strip.length != 0
             user.current_city = params[:current_city]
         end
 
-        if params[:study_place] != nil
+        if params[:current_country] != nil && params[:current_country].strip.length != 0
+            user.current_country = params[:current_country]
+        end
+
+        if params[:study_place] != nil && params[:study_place].strip.length != 0
             user.study_place = params[:study_place]
         end
 
-        if params[:chess_level] != nil
+        if params[:chess_level] != nil && params[:chess_level].strip.length != 0
             user.chess_level = params[:chess_level]
         end
 
-        if params[:fide_rating] != nil
+        if params[:fide_rating] != nil && params[:fide_rating].strip.length != 0
             user.fide_rating = params[:fide_rating]
         end
 
-        if params[:about] != nil
+        if params[:about] != nil && params[:about].strip.length != 0
             user.about = params[:about]
         end
 
-        if params[:hobbies] != nil
+        if params[:hobbies] != nil && params[:hobbies].strip.length != 0
             user.hobbies = params[:hobbies]
         end
 

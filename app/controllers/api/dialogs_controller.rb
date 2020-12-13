@@ -5,7 +5,8 @@ class Api::DialogsController < ApplicationController
         dialogs = []
         UsersToDialog.where(user_id: user.id).each do |dialog_id|
             dialog = Dialog.find_by_id(dialog_id).to_json(:only => [:id])
-            dialogs.push()
+
+            dialogs.push(dialog)
         end
 
     end

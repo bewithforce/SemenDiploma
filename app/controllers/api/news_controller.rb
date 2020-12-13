@@ -40,7 +40,7 @@ class Api::NewsController < ApplicationController
         text = text.reject { |c| c.empty? }
         answer[:text] = text
         answer[:time] = record.created_at.localtime.strftime('%a, %d %b %Y %k:%M')
-        #answer[:photo] = photo
+        answer[:photo] = photo
         answer
     end
 end

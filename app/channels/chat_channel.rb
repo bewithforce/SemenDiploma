@@ -8,4 +8,8 @@ class ChatChannel < ApplicationCable::Channel
     def receive(data)
         ActionCable.server.broadcast("chat_#{params[:room]}", data)
     end
+
+    def unsubscribed
+        super
+    end
 end

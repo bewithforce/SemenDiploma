@@ -24,8 +24,8 @@ class Api::ProfileController < ApplicationController
             # content = File.binread(file)
             # encoded = Base64.encode64(content).to_s
             encoded = params[:photo]
-            photo_id = Photo.create(photo: encoded).id
-            user.photo_id = photo_id
+            photo = Photo.create(photo: encoded)
+            user.photo_id = photo.id
         end
 
         if params[:birthday] != nil && params[:birthday].strip.length != 0

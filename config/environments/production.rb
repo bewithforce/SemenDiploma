@@ -3,7 +3,7 @@ Rails.application.configure do
   #
 
   config.web_socket_server_url = 'wss://chess-network.herokuapp.com/cable'
-  config.action_cable.allowed_request_origins = %w[https://chess-network.herokuapp.com /http:\/\/chess-network.herokuapp.com.*/]
+  config.action_cable.allowed_request_origins = %w[https://chess-network.netlify.app /http:\/\/chess-network.netlify.app.*/]
 
   # Code is not reloaded between requests.
   config.cache_classes = true

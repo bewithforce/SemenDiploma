@@ -11,14 +11,6 @@ class Api::ProfileController < ApplicationController
             return
         end
 
-        if params[:email] != nil
-            user.email = params[:email]
-        end
-
-        if params[:password] != nil
-            user.password = params[:password]
-        end
-
         if params[:name] != nil
             user.name = params[:name]
         end
@@ -88,7 +80,6 @@ class Api::ProfileController < ApplicationController
 
         answer = []
         users.each do |user|
-            user
             photo = Photo.find_by_id(user.photo_id)
             user_json = JSON.parse user.to_json(:only => [:id, :email, :about, :birthday, :chess_level, :current_city, :current_country, :fide_rating, :hobbies, :name, :surname, :online, :study_place])
             user_json[:isFollowed] = is_following(self_id, user.id)
@@ -101,7 +92,8 @@ class Api::ProfileController < ApplicationController
 
     def friends
         token = cookies[:auth_token]
-        user = User.find_by_token(token)
+        user = params[:id] == nil ? User.find_by_token(token) : User.find_by_id(params[:id])
+
         if user == nil
             render json: {}, status: 403
             return
@@ -158,6 +150,10 @@ class Api::ProfileController < ApplicationController
     def show
         token = cookies[:auth_token]
         user = User.find_by_token(token)
+        if user == nil
+            render :json => {}, status: 403
+            return
+        end
 
         user_id = params[:id]
         answer = get_user_by_id(user_id, user.id)

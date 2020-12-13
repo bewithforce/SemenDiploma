@@ -10,6 +10,7 @@ Rails.application.routes.draw do
         post 'profile/password' => 'profile#edit_password'
         get 'profile/all'
         get 'profile/friends' => 'profile#friends'
+        get 'profile/friends/:id' => 'profile#friends'
         post 'profile/:id/subscribe' => 'profile#subscribe'
         post 'profile/:id/unsubscribe' => 'profile#unsubscribe'
         get 'profile/:id' => 'profile#show'

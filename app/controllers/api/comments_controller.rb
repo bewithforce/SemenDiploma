@@ -43,6 +43,13 @@ class Api::CommentsController < ApplicationController
         comment = Comment.create(author_id: user.id, news_id: news_id, text: params[:text])
         answer = JSON.parse comment.to_json(:only => [:id, :news_id, :author_id, :text])
         answer[:time] = comment.created_at.localtime.strftime('%a, %d %b %Y %k:%M')
+        author = User.find_by_id(comment.author_id)
+        answer[:name] = author.name
+        answer[:surname] = author.surname
+
+        photo = Photo.find_by_id(author.photo_id)
+        answer[:photo] = photo.photo
+
         render :json => answer, status: 200
     end
 

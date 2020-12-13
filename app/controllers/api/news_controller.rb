@@ -37,10 +37,10 @@ class Api::NewsController < ApplicationController
         photo = Photo.find_by_id(record.photo_id).photo
         answer = JSON.parse record.to_json(:only => [:id, :tag, :title, :summary])
         text = record.text.split("\n")
-        text.reject { |c| c.empty? }
+        text = text.reject { |c| c.empty? }
         answer[:text] = text
         answer[:time] = record.created_at.localtime.strftime('%a, %d %b %Y %k:%M')
-        answer[:photo] = photo
+        #answer[:photo] = photo
         answer
     end
 end

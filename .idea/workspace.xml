@@ -226,7 +226,7 @@
       <workItem from="1607593378313" duration="1192000" />
       <workItem from="1607673103744" duration="6012000" />
       <workItem from="1607755454976" duration="14166000" />
-      <workItem from="1607848195104" duration="23347000" />
+      <workItem from="1607848195104" duration="24771000" />
     </task>
     <servers />
   </component>
@@ -258,14 +258,6 @@
             <option name="block-ordinal" value="-1" />
           </properties>
           <option name="timeStamp" value="18" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="ruby-line">
-          <url>file://$PROJECT_DIR$/app/controllers/api/profile_controller.rb</url>
-          <line>6</line>
-          <properties myBlockOrdinal="-1">
-            <option name="block-ordinal" value="-1" />
-          </properties>
-          <option name="timeStamp" value="21" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

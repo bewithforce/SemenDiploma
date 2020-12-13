@@ -10,6 +10,6 @@ class ChatChannel < ApplicationCable::Channel
     end
 
     def unsubscribed
-        super
+
     end
 end

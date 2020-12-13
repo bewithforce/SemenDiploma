@@ -61,7 +61,9 @@ class Api::ProfileController < ApplicationController
         end
 
         user.save
-        render json: {}, status: 200
+
+        answer = get_user_by_id(user.id, user.id)
+        render json: answer, status: 200
     end
 
     def edit_password

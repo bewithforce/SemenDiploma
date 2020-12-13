@@ -2,18 +2,17 @@ class ChatChannel < ApplicationCable::Channel
 
     def subscribed
         ApplicationCable::Connection.
-        if params[:room_id].present?
+          if params[:room_id].present?
 
-            # creates a private chat room with a unique name
-            stream_from("ChatRoom-#{(params[:room_id])}")
-        end
+        # creates a private chat room with a unique name
+        stream_from("ChatRoom-#{(params[:room_id])}")
     end
 
     # calls when a client broadcasts data
     def speak(data)
-        sender    = get_sender(data)
-        room_id   = data['room_id']
-        message   = data['message']
+        sender = get_sender(data)
+        room_id = data['room_id']
+        message = data['message']
 
         raise 'No room_id!' if room_id.blank?
         convo = get_convo(room_id) # A conversation is a room

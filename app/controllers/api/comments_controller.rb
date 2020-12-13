@@ -17,6 +17,8 @@ class Api::CommentsController < ApplicationController
             record[:time] = comment.created_at.localtime.strftime('%a, %d %b %Y %k:%M')
             answer.push(record)
         end
+
+        answer.sort
         render :json => answer, status: 200
     end
 

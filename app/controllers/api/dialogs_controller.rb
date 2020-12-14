@@ -24,6 +24,6 @@ class Api::DialogsController < ApplicationController
     end
 
     def remove
-        dialog_id =
+        #dialog_id =
     end
 end

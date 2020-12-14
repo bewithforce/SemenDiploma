@@ -52,5 +52,6 @@ class ChatChannel < ApplicationCable::Channel
         answer[:surname] = user.surname
         answer[:time] = msg.created_at.localtime.strftime('%a, %d %b %Y %k:%M')
         answer[:photo] = photo.photo
+        answer
     end
 end

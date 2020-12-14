@@ -22,7 +22,7 @@ class ChatChannel < ApplicationCable::Channel
         answer = []
         if messages != nil
             messages.each do |x|
-                answer.push JSON.parse x.to_json(:only => [:user_id, :dialog_id, :text])
+                answer.push(msg_to_transmit(x))
             end
         end
 
@@ -34,7 +34,23 @@ class ChatChannel < ApplicationCable::Channel
 
     def speak(data)
         message = Message.create(user_id: data["sender_id"], dialog_id: data["dialog_id"], text: data["text"])
-        answer = JSON.parse message.to_json(:only => [:user_id, :dialog_id, :text])
+        answer = msg_to_transmit(message)
         ActionCable.server.broadcast "dialog #{message.dialog_id}", json: answer
+    end
+
+    def unsubscribed
+
+    end
+
+    private
+
+    def msg_to_transmit(msg)
+        answer = JSON.parse msg.to_json(:only => [:user_id, :dialog_id, :text])
+        user = User.find_by_id(msg.user_id)
+        photo = Photo.find_by_id(user.photo_id)
+        answer[:name] = user.name
+        answer[:surname] = user.surname
+        answer[:time] = msg.created_at.localtime.strftime('%a, %d %b %Y %k:%M')
+        answer[:photo] = photo.photo
     end
 end

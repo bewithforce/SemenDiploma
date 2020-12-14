@@ -18,17 +18,19 @@ class ChatChannel < ApplicationCable::Channel
             UsersToDialog.create(user_id: receiver.id, dialog_id: dialog.id)
         end
 
+        ({ dialog_id: dialog.id})
+
         messages = Message.where(dialog_id: dialog.id)
-        answer = []
         if messages != nil
             messages.each do |x|
-                answer.push(msg_to_transmit(x))
+                result =
+                  transmit(msg_to_transmit(x))
             end
         end
 
-        result = { dialog_id: dialog.id, msg_history: answer }
+
         stream_from("dialog #{dialog.id}")
-        transmit(result)
+
         #ActionCable.server.broadcast "dialog #{dialog.id}", json: result
     end
 
@@ -51,7 +53,7 @@ class ChatChannel < ApplicationCable::Channel
         answer[:name] = user.name
         answer[:surname] = user.surname
         answer[:time] = msg.created_at.localtime.strftime('%a, %d %b %Y %k:%M')
-        #answer[:photo] = photo.photo
+        answer[:photo] = photo.photo
         answer
     end
 end

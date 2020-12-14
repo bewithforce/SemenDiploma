@@ -28,17 +28,11 @@ Rails.application.routes.draw do
         post 'comments/:id/add' => 'comments#add'
         delete 'comments/:id/delete' => 'comments#delete'
 
-        # get 'messages'
-        # get 'messages/:id'
-        # post 'messages/:id'
-        #
-        #
-        #
+        get 'dialogs/all' => 'dialogs#all'
 
         get 'news/all' => 'news#all'
         get 'news/:id' => 'news#show'
 
-        get 'test' => 'dialogs#test'
     end
     root 'main#index'
     get '/*path' => 'main#index'

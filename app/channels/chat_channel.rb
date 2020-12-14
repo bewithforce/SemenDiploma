@@ -25,8 +25,9 @@ class ChatChannel < ApplicationCable::Channel
                 answer.push JSON.parse x.to_json(:only => [:user_id, :dialog_id, :text])
             end
         end
+        result = { dialog_id: dialog.id, msg_history: messages }
         stream_from("dialog #{dialog.id}")
-        ActionCable.server.broadcast "dialog #{dialog.id}", json: answer
+        ActionCable.server.broadcast "dialog #{dialog.id}", json: result
     end
 
     def speak(data)

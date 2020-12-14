@@ -18,16 +18,14 @@ class ChatChannel < ApplicationCable::Channel
             UsersToDialog.create(user_id: receiver.id, dialog_id: dialog.id)
         end
 
-        ({ dialog_id: dialog.id})
+        ({ dialog_id: dialog.id })
 
         messages = Message.where(dialog_id: dialog.id)
         if messages != nil
             messages.each do |x|
-                result =
-                  transmit(msg_to_transmit(x))
+                transmit(msg_to_transmit(x))
             end
         end
-
 
         stream_from("dialog #{dialog.id}")
 

@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="a6fa3d6e-0e6c-4a46-8452-84e6d4de3bab" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/channels/chat_channel.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/channels/chat_channel.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/api/dialogs_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/api/dialogs_controller.rb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -226,7 +228,7 @@
       <workItem from="1607755454976" duration="14166000" />
       <workItem from="1607848195104" duration="31706000" />
       <workItem from="1607938461640" duration="2735000" />
-      <workItem from="1607961344584" duration="9595000" />
+      <workItem from="1607961344584" duration="10804000" />
     </task>
     <servers />
   </component>
@@ -261,7 +263,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="ruby-line">
           <url>file://$PROJECT_DIR$/app/controllers/api/dialogs_controller.rb</url>
-          <line>42</line>
+          <line>44</line>
           <properties myBlockOrdinal="-1">
             <option name="block-ordinal" value="-1" />
           </properties>
@@ -269,7 +271,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="ruby-line">
           <url>file://$PROJECT_DIR$/app/controllers/api/dialogs_controller.rb</url>
-          <line>40</line>
+          <line>42</line>
           <properties myBlockOrdinal="-1">
             <option name="block-ordinal" value="-1" />
           </properties>

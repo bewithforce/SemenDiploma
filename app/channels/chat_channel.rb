@@ -26,7 +26,7 @@ class ChatChannel < ApplicationCable::Channel
             end
         end
 
-        result = { dialog_id: dialog.id, msg_history: messages }
+        result = { dialog_id: dialog.id, msg_history: answer }
         stream_from("dialog #{dialog.id}")
         transmit(result)
         #ActionCable.server.broadcast "dialog #{dialog.id}", json: result

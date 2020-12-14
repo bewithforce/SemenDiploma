@@ -26,4 +26,24 @@ class Api::DialogsController < ApplicationController
     def remove
         #dialog_id =
     end
+
+    def test
+        sender_id = 6
+        receiver_id = 5
+
+        user_to_dialog = UsersToDialog.where(user_id: sender_id).reject do |x|
+            another = UsersToDialog.where(dialog_id: x.dialog_id)
+            another.reject { |c| c.user_id == sender_id }
+            another.find_by_user_id(receiver_id) == nil
+        end[0]
+
+
+        dialog = Dialog.find_by_id(user_to_dialog.dialog_id)
+
+        if dialog == nil
+            dialog = Dialog.create
+            UsersToDialog.create(user_id: sender.id, dialog_id: dialog.id)
+            UsersToDialog.create(user_id: receiver.id, dialog_id: dialog.id)
+        end
+    end
 end

@@ -37,6 +37,8 @@ Rails.application.routes.draw do
 
         get 'news/all' => 'news#all'
         get 'news/:id' => 'news#show'
+
+        get 'test' => 'dialogs#test'
     end
     root 'main#index'
     get '/*path' => 'main#index'

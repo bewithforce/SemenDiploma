@@ -4,11 +4,13 @@ class ChatChannel < ApplicationCable::Channel
         sender = User.find_by_id(params[:sender_id])
         receiver = User.find_by_id(params[:receiver_id])
 
-        dialog = UsersToDialog.where(user_id: sender.id).reject do |x|
+        user_to_dialog = UsersToDialog.where(user_id: sender.id).reject do |x|
             another = UsersToDialog.where(dialog_id: x.dialog_id)
             another.reject { |c| c.user_id == sender.id }
-            another.find_by_user_id(receiver.id)
+            another.find_by_user_id(receiver.id) == nil
         end[0]
+
+        dialog = Dialog.find_by_id(user_to_dialog.dialog_id)
 
         if dialog == nil
             dialog = Dialog.create

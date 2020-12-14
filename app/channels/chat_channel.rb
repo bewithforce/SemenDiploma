@@ -18,7 +18,7 @@ class ChatChannel < ApplicationCable::Channel
             UsersToDialog.create(user_id: receiver.id, dialog_id: dialog.id)
         end
 
-        ({ dialog_id: dialog.id })
+        transmit({ dialog_id: dialog.id })
 
         messages = Message.where(dialog_id: dialog.id)
         if messages != nil

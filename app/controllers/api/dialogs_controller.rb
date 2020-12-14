@@ -13,8 +13,17 @@ class Api::DialogsController < ApplicationController
             photo = Photo.find_by_id(another_user.photo_id)
             dialog[:another_user_photo] = photo.photo
             dialog[:last_message] =
-            dialogs.push(dialog)
+              dialogs.push(dialog)
         end
         render json: dialogs, status: 200
+    end
+
+    def add
+        dialog = Dialog.create
+        render json: { dialog_id: dialog.id }, status: 200
+    end
+
+    def remove
+        dialog_id =
     end
 end

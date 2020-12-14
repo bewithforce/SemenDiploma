@@ -227,7 +227,7 @@
       <workItem from="1607755454976" duration="14166000" />
       <workItem from="1607848195104" duration="31706000" />
       <workItem from="1607938461640" duration="2735000" />
-      <workItem from="1607961344584" duration="6746000" />
+      <workItem from="1607961344584" duration="7683000" />
     </task>
     <servers />
   </component>
@@ -262,7 +262,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="ruby-line">
           <url>file://$PROJECT_DIR$/app/channels/chat_channel.rb</url>
-          <line>33</line>
+          <line>35</line>
           <properties myBlockOrdinal="-1">
             <option name="block-ordinal" value="-1" />
           </properties>
